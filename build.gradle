@@ -30,3 +30,12 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+// Tarea personalizada para ejecutar el seed (similar a rails db:seed)
+task dbSeed(type: JavaExec) {
+	group = 'application'
+	description = 'Ejecuta el seed de la base de datos'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.syntaxerror.quehayut.QueHayUtApplication'
+	args '--seed'
+}
