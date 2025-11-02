@@ -39,3 +39,12 @@ task dbSeed(type: JavaExec) {
 	mainClass = 'com.syntaxerror.quehayut.QueHayUtApplication'
 	args '--seed'
 }
+
+// Tarea personalizada para mostrar todos los registros de la base de datos
+task dbShow(type: JavaExec) {
+	group = 'application'
+	description = 'Muestra todos los registros de la base de datos'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.syntaxerror.quehayut.QueHayUtApplication'
+	args '--show'
+}
