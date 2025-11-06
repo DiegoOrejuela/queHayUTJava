@@ -1,5 +1,6 @@
 package com.syntaxerror.quehayut.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.syntaxerror.quehayut.models.enums.EstadoEvento;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -55,10 +56,12 @@ public class Evento {
     @Column(name = "organizador")
     private String organizador;
 
-    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Recordatorio> recordatorios = new ArrayList<>();
 
-    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<EventoCategoria> eventosCategorias = new ArrayList<>();
 
     // Getters and Setters
